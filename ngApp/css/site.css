@@ -1,0 +1,39 @@
+.md-toolbar{
+
+}
+
+h4{
+  text-align: center;
+  font-style: italic;
+}
+h5{
+  margin-bottom:15px;
+  font-weight: bold;  
+}
+
+#homeImg{
+  border-radius:155px /100px;
+  border: 2px solid yellow;
+  margin-top: 30px;
+}
+h1{
+  color: yellow;
+  font-style:italic;
+}
+.nav-btn{
+  font-size: 10px;
+  min-width: 35px;
+  min-height: 35px;
+  padding: 0;
+}
+
+label{
+  font-size:10px;
+}
+
+input.form-control {
+  height: 20px;
+}
+.md-subheader .md-subheader-inner {
+    padding: 10px;
+}

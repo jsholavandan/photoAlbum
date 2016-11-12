@@ -6,25 +6,36 @@
   <meta charset="utf-8">
   <base href="/" />
   <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css" media="screen" title="no title">
   <link rel="stylesheet" href="/ngApp/css/site.css"/>
 </head>
 
-<body>
-  <div class="container">
-        <h1>photoalbum</h1>
-        <div>
-          <a href="/">Home</a> /
-          <a href="/about">About</a>
-        </div>
-        <hr />
-        
-        <ui-view></ui-view>
+<body ng-cloak ng-controller="HomeController as controller">
+  <div layout="column">
+        <md-toolbar layout="row" layout-align="center center" class="md-toolbartools md-medium-tall" >
+            <h1>Memories Photo Albums</h1>
+          <span flex></span>
+          <div ng-if="currentUser === false">
+            <md-button class="nav-btn" ng-click="controller.login()">Login</md-button>
+            <md-button class="nav-btn" ng-click="controller.register()">Register</md-button>
+          </div>
+          <div ng-if="currentUser !== false">
+            <md-button class="nav-btn" ng-click="controller.logout()">Logout</md-button>
+          </div>
+        </md-toolbar>
+        <md-subheader><h4>Preserve memories forever</h4></md-subheader>
+        <md-content layout="column" layout-align="center center">
+          <ui-view></ui-view>
+        </md-content>        
   </div>
 
   <script src="/bower_components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="/bower_components/angular-material/angular-material.js"></script>
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
   <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
+  <script type="text/javascript" src="/bower_components/angular-aria/angular-aria.js"></script>
+  <script type="text/javascript" src="/bower_components/angular-messages/angular-messages.js"></script>
   <script src="/bower_components/angular-touch/angular-touch.min.js"></script>
   <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 

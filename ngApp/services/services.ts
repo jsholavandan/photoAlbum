@@ -1,19 +1,23 @@
 namespace photoalbum.Services {
 
-    export class MovieService {
-        private MovieResource;
+    export class AccountService {
+      private LoginResource;
+      private RegisterResource;
 
-        public listMovies() {
-            return this.MovieResource.query();
-        }
+      public login(userInfo){
+      //  console.log(userInfo);
+        return this.LoginResource.save(userInfo).$promise;
+      }
 
-        constructor($resource: ng.resource.IResourceService) {
-            this.MovieResource = $resource('/api/movies');
-        }
+      public signUp(user){
+        return this.RegisterResource.save(user).$promise;
+      }
+
+      constructor($resource: ng.resource.IResourceService){
+        this.LoginResource = $resource('/routes/users/login');
+        this.RegisterResource = $resource('/routes/register/register');
+      }
+
     }
-    angular.module('photoalbum').service('movieService', MovieService);
-    export class MyService {
-
-    }
-    angular.module('photoalbum').service('myService', MyService);
+    angular.module('photoalbum').service('accountService', AccountService);
     }

@@ -1,36 +1,50 @@
 namespace photoalbum {
 
-    angular.module('photoalbum', ['ui.router', 'ngResource', 'ui.bootstrap']).config((
+    angular.module('photoalbum', ['ui.router', 'ngResource', 'ui.bootstrap', 'ngMaterial']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
-        $locationProvider: ng.ILocationProvider
+        $locationProvider: ng.ILocationProvider,
+        $mdThemingProvider: ng.material.IThemingProvider
     ) => {
         // Define routes
         $stateProvider
             .state('home', {
                 url: '/',
-                templateUrl: '/ngApp/views/home.html',
-                controller: photoalbum.Controllers.HomeController,
+                templateUrl: '/ngApp/views/home.html',                
+            })
+            .state('login', {
+                url: '/login',
+                templateUrl: '/ngApp/views/login.html',
+                controller: photoalbum.Controllers.AccountController,
                 controllerAs: 'controller'
             })
-            .state('about', {
-                url: '/about',
-                templateUrl: '/ngApp/views/about.html',
-                controller: photoalbum.Controllers.AboutController,
+            .state('register', {
+                url: '/register',
+                templateUrl: '/ngApp/views/register.html',
+                controller: photoalbum.Controllers.AccountController,
                 controllerAs: 'controller'
             })
-            .state('notFound', {
-                url: '/notFound',
-                templateUrl: '/ngApp/views/notFound.html'
+            .state('main', {
+              url: '/main',
+              templateUrl: '/ngApp/views/main.html',
+              controller: photoalbum.Controllers.MainController,
+              controllerAs: 'controller'
             });
 
         // Handle request for non-existent route
-        $urlRouterProvider.otherwise('/notFound');
+        $urlRouterProvider.otherwise('/home');
 
         // Enable HTML5 navigation
         $locationProvider.html5Mode(true);
+
+        //config theming
+        $mdThemingProvider.theme('default')
+          .primaryPalette('grey',{
+            default: '800'
+          })
+          .accentPalette('yellow');
     });
 
-    
+
 
 }

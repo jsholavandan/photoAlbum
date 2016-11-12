@@ -5,9 +5,17 @@ import * as logger from 'morgan';
 import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
 import * as ejs from 'ejs';
+import * as mongoose from 'mongoose';
 
-import routes from './routes/index';
+import passport = require('passport');
+
+//import routes from './routes/index';
 import users from './routes/users';
+import register from './routes/register';
+
+require('./models/user');
+require('./config/passport');
+
 
 let app = express();
 
@@ -26,8 +34,13 @@ app.use('/bower_components', express.static(path.join(__dirname, 'bower_componen
 app.use('/ngApp', express.static(path.join(__dirname, 'ngApp')));
 app.use('/api', express.static(path.join(__dirname, 'api')));
 
-app.use('/', routes);
-app.use('/users', users);
+app.use(passport.initialize());
+
+//app.use('/', routes);
+app.use('/routes/users', users);
+
+app.use('/routes/register', register);
+
 
 
 // APIs
@@ -37,6 +50,8 @@ app.use('/api', require('./api/movies'));
 app.use('/api', require('./api/genres'));
 app.use('/api', require('./api/guestbook'));
 app.use('/api', require('./api/deepThought'));
+
+mongoose.connect('mongodb://jayshol:saibaba@ds151117.mlab.com:51117/photoalbum');
 
 // redirect 404 to home for the sake of AngularJS client-side routes
 app.get('/*', function(req, res, next) {
