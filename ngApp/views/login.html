@@ -1,12 +1,16 @@
-<h5>Login</h5>
-<form ng-submit="controller.loginUser()">
-  <div class="form-group">
-    <label>User Name:</label>
-    <input name="username" ng-model="controller.userCredentials.username" class="form-control">
-  </div>
-  <div class="form-group">
-    <label>Password:</label>
-    <input name="password" ng-model="controller.userCredentials.password" class="form-control">
-  </div>
-  <button class="btn btn-primary">Login</button>
-</form>
+<div layout="column" layout-align="center center" >
+  <div class="marg-BottomCls"  >
+  <h5 class="align-center">Login</h5>
+  <form ng-submit="controller.loginUser()">
+    <div class="form-group">
+      <label>User Name:</label>
+      <input name="username" ng-model="controller.userCredentials.username" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Password:</label>
+      <input name="password" ng-model="controller.userCredentials.password" class="form-control">
+    </div>
+    <button class="btn btn-primary">Login</button>
+  </form>
+</div>
+</div>

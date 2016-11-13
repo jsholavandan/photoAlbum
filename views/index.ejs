@@ -7,26 +7,48 @@
   <base href="/" />
   <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css" media="screen" title="no title">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Tangerine">
+
   <link rel="stylesheet" href="/ngApp/css/site.css"/>
 </head>
 
-<body ng-cloak ng-controller="HomeController as controller">
-  <div layout="column">
-        <md-toolbar layout="row" layout-align="center center" class="md-toolbartools md-medium-tall" >
-            <h1>Memories Photo Albums</h1>
-          <span flex></span>
-          <div ng-if="currentUser === false">
-            <md-button class="nav-btn" ng-click="controller.login()">Login</md-button>
-            <md-button class="nav-btn" ng-click="controller.register()">Register</md-button>
-          </div>
-          <div ng-if="currentUser !== false">
-            <md-button class="nav-btn" ng-click="controller.logout()">Logout</md-button>
-          </div>
+<body ng-cloak ng-controller="HomeController as controller" layout="column">
+  <div layout="column" flex>
+     <md-toolbar layout="row" layout-align="center center" class="md-toolbartools md-medium-tall" >
+       <md-button ng-click="controller.toggleList()" hide-gt-sm>
+         <md-icon><i class="material-icons">menu</i></md-icon>
+       </md-button>
+          <div layout-align=" center center" layout="row" flex>
+            <h1 class="align-center heading-text">Memories</h1></div>
+            <div layout-align="end end" layout="column"  >
+              <div ng-if="currentUser === false" layout="row">
+                <md-button class="nav-btn" ng-click="controller.login()">Login</md-button>
+                <md-button class="nav-btn" ng-click="controller.register()">Register</md-button>
+              </div>
+              <div ng-if="currentUser !== false" layout="row">
+                <md-button class="nav-btn" ng-click="controller.logout()">Logout</md-button>                
+              </div>
+            </div>
         </md-toolbar>
-        <md-subheader><h4>Preserve memories forever</h4></md-subheader>
-        <md-content layout="column" layout-align="center center">
-          <ui-view></ui-view>
-        </md-content>        
+
+<!--        <md-toolbar layout="row" layout-align="center center" class="md-toolbartools md-medium-tall" >
+          <div layout="row" layout-align="center center">
+            <md-button>
+              <md-icon><i class="material-icons">menu</i></md-icon>
+            </md-button>
+            <span flex></span>
+            <h1 class="align-center">Memories</h1></div>
+            <span flex></span>
+            <md-button class="nav-btn" ng-click="controller.login()" ng-if="currentUser === false">Login</md-button>
+            <md-button class="nav-btn" ng-click="controller.register()" ng-if="currentUser === false">Register</md-button>
+            <md-button class="nav-btn" ng-click="controller.logout()" ng-if="currentUser !== false">Logout</md-button>
+          </div>
+        </md-toolbar>  -->
+
+        <md-content layout="column" flex>
+          <ui-view layout="column" flex></ui-view>
+        </md-content>
   </div>
 
   <script src="/bower_components/angular/angular.min.js"></script>

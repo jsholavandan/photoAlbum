@@ -1,6 +1,9 @@
 .md-toolbar{
 
 }
+body{
+
+}
 
 h4{
   text-align: center;
@@ -8,7 +11,11 @@ h4{
 }
 h5{
   margin-bottom:15px;
-  font-weight: bold;  
+  font-weight: bold;
+}
+
+.align-center{
+  text-align: center;
 }
 
 #homeImg{
@@ -35,5 +42,68 @@ input.form-control {
   height: 20px;
 }
 .md-subheader .md-subheader-inner {
-    padding: 10px;
+    padding: 20px;
 }
+
+.backColor{
+  background-color: green;
+}
+.mycls{
+  border: 1px solid black;
+}
+
+.marg-BottomCls{
+  margin-top: 5%;
+}
+
+md-sidenav.md-locked-open {
+   width: 130px;
+   min-width: 130px;
+   max-width: 130px;
+}
+
+/*     */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
+       url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+       url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.heading-text {
+  font-family: 'Tangerine', serif;
+  font-size: 52px;
+}
+
+/*   */
