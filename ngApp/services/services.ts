@@ -20,4 +20,25 @@ namespace photoalbum.Services {
 
     }
     angular.module('photoalbum').service('accountService', AccountService);
+
+    export class PhotoAlbumService{
+      private PhotoResource;
+      private AlbumResource;
+
+      public listPhotos(username){
+        return this.PhotoResource.query({username:username});
+      }
+
+      public savePhoto(photoObj){
+        //console.log(photoObj);
+        return this.PhotoResource.save(photoObj).$promise;
+      }
+
+
+      constructor(private $resource: ng.resource.IResourceService){
+        this.PhotoResource = $resource('/api/photos');
+        this.AlbumResource = $resource('/api/albums');
+      }
     }
+    angular.module('photoalbum').service("photoAlbumService", PhotoAlbumService);
+}

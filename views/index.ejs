@@ -16,42 +16,40 @@
 <body ng-cloak ng-controller="HomeController as controller" layout="column">
   <div layout="column" flex>
      <md-toolbar layout="row" layout-align="center center" class="md-toolbartools md-medium-tall" >
-       <md-button ng-click="controller.toggleList()" hide-gt-sm>
+       <md-button ng-click="controller.toggleMenu('left')" hide-gt-sm ng-if="currentUser !== false">
          <md-icon><i class="material-icons">menu</i></md-icon>
        </md-button>
           <div layout-align=" center center" layout="row" flex>
             <h1 class="align-center heading-text">Memories</h1></div>
-            <div layout-align="end end" layout="column"  >
+            <div layout-align="end end" layout="row"  >
+              <md-button class="nav-btn" ng-click="controller.home()">Home</md-button>
               <div ng-if="currentUser === false" layout="row">
                 <md-button class="nav-btn" ng-click="controller.login()">Login</md-button>
                 <md-button class="nav-btn" ng-click="controller.register()">Register</md-button>
               </div>
               <div ng-if="currentUser !== false" layout="row">
-                <md-button class="nav-btn" ng-click="controller.logout()">Logout</md-button>                
+                <md-button class="nav-btn" ng-click="controller.logout()">Logout</md-button>
               </div>
             </div>
         </md-toolbar>
-
-<!--        <md-toolbar layout="row" layout-align="center center" class="md-toolbartools md-medium-tall" >
-          <div layout="row" layout-align="center center">
-            <md-button>
-              <md-icon><i class="material-icons">menu</i></md-icon>
-            </md-button>
-            <span flex></span>
-            <h1 class="align-center">Memories</h1></div>
-            <span flex></span>
-            <md-button class="nav-btn" ng-click="controller.login()" ng-if="currentUser === false">Login</md-button>
-            <md-button class="nav-btn" ng-click="controller.register()" ng-if="currentUser === false">Register</md-button>
-            <md-button class="nav-btn" ng-click="controller.logout()" ng-if="currentUser !== false">Logout</md-button>
-          </div>
-        </md-toolbar>  -->
-
-        <md-content layout="column" flex>
-          <ui-view layout="column" flex></ui-view>
-        </md-content>
+        <div layout="row" flex ng-controller="SidenavController as sideController">
+          <md-sidenav ng-if="currentUser !== false" class="md-sidenav-left" md-is-locked-open="$mdMedia('gt-sm')" md-component-id="left" layout-align="start center" >
+            <md-list>
+              <md-list-item><md-button class="nav-btn" ng-click="sideController.pickFile()">Upload</md-button></md-list-item>
+              <md-list-item><md-button class="nav-btn" ng-click="sideController.photos()">Photos</md-button></md-list-item>
+              <md-list-item><md-button class="nav-btn" ng-click="sideController.albums()">Albums</md-button></md-list-item>
+            </md-list>
+          </md-sidenav>
+          <md-content layout="column" flex>
+            <ui-view layout="column" flex></ui-view>
+          </md-content>
+        </div>
   </div>
 
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
   <script src="/bower_components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="//api.filepicker.io/v2/filepicker.js"></script>
+  <script src="/ngApp/angular_filepicker.min.js"></script>
   <script type="text/javascript" src="/bower_components/angular-material/angular-material.js"></script>
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
@@ -60,6 +58,7 @@
   <script type="text/javascript" src="/bower_components/angular-messages/angular-messages.js"></script>
   <script src="/bower_components/angular-touch/angular-touch.min.js"></script>
   <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
 
   <script src="/ngApp/app.js"></script>
   <script src="/ngApp/controllers/controllers.js"></script>

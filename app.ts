@@ -9,6 +9,9 @@ import * as mongoose from 'mongoose';
 
 import passport = require('passport');
 
+import photos from './api/photos';
+import albums from './api/albums';
+
 //import routes from './routes/index';
 import users from './routes/users';
 import register from './routes/register';
@@ -33,6 +36,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components', express.static(path.join(__dirname, 'bower_components')));
 app.use('/ngApp', express.static(path.join(__dirname, 'ngApp')));
 app.use('/api', express.static(path.join(__dirname, 'api')));
+app.use('/api/photos', photos);
+app.use('/api/albums', albums);
 
 app.use(passport.initialize());
 

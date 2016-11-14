@@ -1,0 +1,8 @@
+<div layout="row" flex>
+  <h2>photos</h2>  
+  <div ng-repeat="photo in controller.photos">
+      <img ng-src="{{ photo.url | fpConvert: {w:400} }}" />
+      <span>{{photo.filename}}</span>
+  </div>
+
+</div>

@@ -1,5 +1,5 @@
-.md-toolbar{
-
+md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar){
+  border-bottom: 1px ridge yellow;
 }
 body{
 
@@ -45,9 +45,7 @@ input.form-control {
     padding: 20px;
 }
 
-.backColor{
-  background-color: green;
-}
+
 .mycls{
   border: 1px solid black;
 }
@@ -56,10 +54,15 @@ input.form-control {
   margin-top: 5%;
 }
 
-md-sidenav.md-locked-open {
+md-sidenav {
    width: 130px;
    min-width: 130px;
    max-width: 130px;
+}
+
+md-sidenav{
+  background-color: rgb(66,66,66);
+  color:yellow;
 }
 
 /*     */

@@ -1,16 +1,17 @@
 namespace photoalbum {
 
-    angular.module('photoalbum', ['ui.router', 'ngResource', 'ui.bootstrap', 'ngMaterial']).config((
+    angular.module('photoalbum', ['ui.router', 'ngResource', 'ui.bootstrap', 'ngMaterial','angular-filepicker']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
         $locationProvider: ng.ILocationProvider,
-        $mdThemingProvider: ng.material.IThemingProvider
+        $mdThemingProvider: ng.material.IThemingProvider,
+        filepickerProvider
     ) => {
         // Define routes
         $stateProvider
             .state('home', {
                 url: '/',
-                templateUrl: '/ngApp/views/home.html',                
+                templateUrl: '/ngApp/views/home.html',
             })
             .state('login', {
                 url: '/login',
@@ -29,6 +30,12 @@ namespace photoalbum {
               templateUrl: '/ngApp/views/main.html',
               controller: photoalbum.Controllers.MainController,
               controllerAs: 'controller'
+            })
+            .state('photos', {
+              url:'/photos',
+              templateUrl:'ngApp/views/photos.html',
+              controller: photoalbum.Controllers.PhotosController,
+              controllerAs: 'controller'
             });
 
         // Handle request for non-existent route
@@ -43,6 +50,8 @@ namespace photoalbum {
             default: '800'
           })
           .accentPalette('yellow');
+
+        filepickerProvider.setKey("Ad3JX9jbjQWKbZ0zA2PNvz");
     });
 
 
