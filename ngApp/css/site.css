@@ -18,11 +18,42 @@ h5{
   text-align: center;
 }
 
+.titleCls{
+  height:30px;
+  background-color: yellow;
+
+}
+/*
+.menuCls{
+  height: 15px;
+  background-color: yellow;
+  color: black;
+  margin-bottom: 5px;
+}
+*/
 #homeImg{
   border-radius:155px /100px;
   border: 2px solid yellow;
   margin-top: 30px;
 }
+
+#photoImg{
+  height:120px;
+  width: 120px;
+}
+
+.imgDivCls{
+  height:120px;
+  width:120px;
+  overflow:hidden;
+  border: 1px solid yellow;
+  margin: 5px;
+}
+
+.mainDivCls{
+  margin-top: 15px;
+}
+
 h1{
   color: yellow;
   font-style:italic;
@@ -110,3 +141,50 @@ md-sidenav{
 }
 
 /*   */
+.md-open-menu-container.md-active{
+    background-color: yellow;
+}
+
+md-menu-bar button{
+  background-color: yellow;
+  font-size: 10px;
+}
+
+md-menu-content.md-menu-bar-menu.md-dense .md-button{
+  font-size:8px;
+}
+
+md-menu-content.md-menu-bar-menu.md-dense{
+  padding:0px;
+  width: 120px;
+}
+
+.btnCls{
+  background-color: yellow;
+}
+
+md-menu-item button{
+  background-color: yellow;
+  font-size: 10px;
+}
+
+md-menu button:active{
+  background-color: yellow;
+}
+md-menu-item{
+  width:120px;
+}
+
+md-menu-bar {
+  padding: 0 10px;
+}
+md-menu-content button{
+  font-size:10px;
+}
+
+md-menu-content {
+  color: rgba(0,0,0,0.87);
+  background-color: yellow;
+  font-size:10px;
+  width: 200px;
+}

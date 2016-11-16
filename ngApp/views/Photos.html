@@ -1,8 +1,32 @@
-<div layout="row" flex>
-  <h2>photos</h2>  
-  <div ng-repeat="photo in controller.photos">
-      <img ng-src="{{ photo.url | fpConvert: {w:400} }}" />
-      <span>{{photo.filename}}</span>
+<div layout="column" flex>
+  <div class="titleCls"><h4>Photos</h4></div>
+  <div class="menuCls">
+    <md-menu-bar>
+      <md-menu>
+        <button ng-click="$mdOpenMenu()" ng-style="btnCls">
+          Options
+        </button>
+        <md-menu-content width="2">
+          <md-menuItem>
+            <md-button>
+              Add to an Album
+            </md-button>
+          </md-menu-item>
+          <md-menuItem>
+            <md-button>
+              Slide show
+            </md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+    </md-menu-bar>
   </div>
-
+  <div layout="row" flex class="mainDivCls">
+    <div ng-repeat="photo in controller.photos" class="imgDivCls">
+      <div  layout="row">
+        <input type="checkbox" />
+        <img ng-src="{{ photo.fileUrl | fpConvert: {w:400} }}" id="photoImg"/>
+      </div>
+    </div>
+  </div>
 </div>

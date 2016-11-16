@@ -44,7 +44,7 @@ namespace photoalbum.Controllers {
     angular.module("photoalbum").controller('HomeController', HomeController);
 
     export class AccountController{
-      public userCredentials = {};
+      public userCredentials = {};      
       public user = {};
 
       public setToken(data){
@@ -97,7 +97,8 @@ namespace photoalbum.Controllers {
 
 
       constructor(private photoAlbumService: photoalbum.Services.PhotoAlbumService, private $rootScope: ng.IRootScopeService, private $scope:ng.IScope){
-        this.photos = this.photoAlbumService.listPhotos(this.$rootScope.username);        
+          this.photos = this.photoAlbumService.listPhotos(this.$rootScope.username);
+          console.log(this.photos);
       }
     }
 
@@ -107,6 +108,7 @@ namespace photoalbum.Controllers {
 
       public photos(){
         this.$state.go('photos');
+      //  this.$scope.$apply();
       }
 
       public pickFile(){
@@ -137,7 +139,8 @@ namespace photoalbum.Controllers {
       constructor(private filepickerService,
                   private photoAlbumService: photoalbum.Services.PhotoAlbumService,
                   private $rootScope:ng.IRootScopeService,
-                  private $state: ng.ui.IStateService){
+                  private $state: ng.ui.IStateService,
+                  private $scope:ng.IScope){
 
       }
     }
