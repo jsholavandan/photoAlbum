@@ -13,7 +13,7 @@
             </md-button>
           </md-menu-item>
           <md-menuItem>
-            <md-button>
+            <md-button ng-click="controller.startSlideShow()">
               Slide show
             </md-button>
           </md-menu-item>
@@ -23,9 +23,11 @@
   </div>
   <div layout="row" flex class="mainDivCls">
     <div ng-repeat="photo in controller.photos" class="imgDivCls">
-      <div  layout="row">
+      <div  layout="column">
         <input type="checkbox" />
-        <img ng-src="{{ photo.fileUrl | fpConvert: {w:400} }}" id="photoImg"/>
+        <div class="photoDivCls">
+          <img ng-src="{{ photo.fileUrl | fpConvert: {w:400} }}" id="photoImg"/>
+        </div>
       </div>
     </div>
   </div>

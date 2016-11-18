@@ -37,14 +37,24 @@ h5{
   margin-top: 30px;
 }
 
+.photoDivCls{
+  height:100%;
+  width: 100%;
+}
+
+.errCls{
+  font-weight: bold;
+  color:red;
+}
+
 #photoImg{
   height:120px;
   width: 120px;
 }
 
 .imgDivCls{
-  height:120px;
-  width:120px;
+  height:150px;
+  width:150px;
   overflow:hidden;
   border: 1px solid yellow;
   margin: 5px;
@@ -187,4 +197,92 @@ md-menu-content {
   background-color: yellow;
   font-size:10px;
   width: 200px;
+}
+
+/*   */
+
+.demo-md-panel {
+  min-height: 500px;
+}
+
+.demo-dialog-example {
+  background: grey;
+  border-radius: 4px;
+  box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2),
+      0 13px 19px 2px rgba(0, 0, 0, 0.14),
+      0 5px 24px 4px rgba(0, 0, 0, 0.12);
+  width: 500px;
+  height:300px;
+}
+
+.demo-dialog-content {
+  padding: 0 15px;
+  width: 100%;
+}
+
+
+
+.demo-dialog-content img {
+  margin-top:5px;
+  height: 300px;
+
+}
+
+.demo-dialog-content{
+  height: 300px;
+  margin: auto;
+  min-height:300px;
+  overflow:auto;
+  position:absolute;
+}
+
+.demo-dialog-button {
+  position:relative;
+  width: 100%;
+}
+
+/*  */
+
+#slides_control > div{
+/*  height: 200px;  */
+overflow:auto;
+}
+.slideImg{
+  margin:15px;
+  width: 400px;
+  min-height:400px;
+}
+#slides_control {
+  position:absolute;
+  width: 400px;
+  left:50%;
+  top:20px;
+  margin-left:-200px;
+  margin-top: 5px;
+  padding-top:40px;
+}
+
+.carousel-inner>.item>img{
+  height:200px;
+  margin-top:5px;
+}
+
+.carousel-inner>.item.active{
+/*  padding-top: 10px; */
+}
+
+.carousel-inner{
+  overflow: :auto;
+}
+
+/* */
+
+.md-button.md-icon-button {
+  /*  margin: 0 0.6rem;  */
+    height: 4.8rem;
+    min-width: 0;
+    line-height: 0.8rem;
+    padding-left: 0;
+    padding-right: 0;
+    width: 1.9rem;
 }

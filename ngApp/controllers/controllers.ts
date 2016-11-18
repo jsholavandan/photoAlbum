@@ -44,8 +44,9 @@ namespace photoalbum.Controllers {
     angular.module("photoalbum").controller('HomeController', HomeController);
 
     export class AccountController{
-      public userCredentials = {};      
+      public userCredentials = {};
       public user = {};
+      public errorMsg;
 
       public setToken(data){
         this.$window.localStorage.setItem('token', JSON.stringify(data.token));
@@ -66,11 +67,14 @@ namespace photoalbum.Controllers {
       }
 
       public loginUser(){
+        this.errorMsg = "";
         this.accountService.login(this.userCredentials).then((res) => {
           this.setToken(res);
           this.$rootScope.currentUser = this.isLoggedIn();
           this.$rootScope.username = this.userCredentials.username;
           this.$state.go('main');
+        }).catch((err) => {
+            this.errorMsg = "Invalid User Name or Password.";
         });
       }
 
@@ -94,15 +98,57 @@ namespace photoalbum.Controllers {
 
     export class PhotosController{
       public photos;
+      public panel;
+
+      public startSlideShow(){
+          let position = this.$mdPanel.newPanelPosition()
+                          .absolute()
+                          .center()
+          let config = {
+            attachTo: angular.element(document.body),
+            controller: PanelDialogCtrl,
+            controllerAs: 'ctrl',
+            templateUrl: 'ngApp/views/panel.tmpl.html',
+            hasBackdrop: true,
+            panelClass: 'demo-dialog-example',
+            position: position,
+            trapFocus: true,
+            zIndex: 150,
+            clickOutsideToClose: true,
+            escapeToClose: true,
+            focusOnOpen: true
+          };
+
+          this.$mdPanel.open(config);
+        }
 
 
-      constructor(private photoAlbumService: photoalbum.Services.PhotoAlbumService, private $rootScope: ng.IRootScopeService, private $scope:ng.IScope){
+      constructor(private photoAlbumService: photoalbum.Services.PhotoAlbumService,
+                  private $rootScope: ng.IRootScopeService,
+                  private $scope:ng.IScope,
+                  private $mdPanel){
           this.photos = this.photoAlbumService.listPhotos(this.$rootScope.username);
-          console.log(this.photos);
+          //console.log(this.photos);
       }
     }
 
     angular.module("photoalbum").controller("PhotosController", PhotosController);
+
+    export class PanelDialogCtrl{
+
+      public closeDialog(){
+        this.mdPanelRef && this.mdPanelRef.close().then(function() {
+          angular.element(document.querySelector('.demo-dialog-open-button')).focus();
+          this.mdPanelRef.destroy();
+        });
+      }
+      constructor(private mdPanelRef){
+
+      }
+    }
+
+    angular.module("photoalbum").controller("PanelDialogCtrl", PanelDialogCtrl);
+
 
     export class SidenavController{
 
