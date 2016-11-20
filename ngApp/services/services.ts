@@ -34,9 +34,13 @@ namespace photoalbum.Services {
         return this.PhotoResource.save(photoObj).$promise;
       }
 
+      public removePhoto(photoId){
+        return this.PhotoResource.remove({id:photoId}).$promise;
+      }
+
 
       constructor(private $resource: ng.resource.IResourceService){
-        this.PhotoResource = $resource('/api/photos');
+        this.PhotoResource = $resource('/api/photos/:id');
         this.AlbumResource = $resource('/api/albums');
       }
     }

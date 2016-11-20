@@ -1,6 +1,6 @@
 namespace photoalbum {
 
-    angular.module('photoalbum', ['ui.router', 'ngResource', 'ui.bootstrap', 'ngMaterial','angular-filepicker']).config((
+    angular.module('photoalbum', ['ui.router', 'ngResource', 'ui.bootstrap', 'ngMaterial','angular-filepicker','ui.bootstrap.contextMenu']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
         $locationProvider: ng.ILocationProvider,
@@ -53,7 +53,5 @@ namespace photoalbum {
 
         filepickerProvider.setKey("Ad3JX9jbjQWKbZ0zA2PNvz");
     });
-
-
 
 }

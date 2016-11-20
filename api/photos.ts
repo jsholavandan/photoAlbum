@@ -27,4 +27,14 @@ router.post('/', (req, res) => {
   });
 });
 
+router.delete('/:id', (req, res) => {
+  let photoId = req.params.id;
+  Photo.remove({_id:photoId}). then(() => {
+    res.sendStatus(200);
+  }).catch((err) => {
+    res.status(500);
+    console.log(err);
+  });
+});
+
 export default router;

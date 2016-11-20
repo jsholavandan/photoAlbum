@@ -122,11 +122,36 @@ namespace photoalbum.Controllers {
           this.$mdPanel.open(config);
         }
 
+        public menuOptions(){
+          return [
+            ['Edit', function($itemScope, $event, modelValue, text, $li){
+
+            }],
+            null,
+            ['Delete', ($itemScope, $event, modelValue, text, $li) => {
+              let photoId = $itemScope.photo._id;
+              let photoUrl = $itemScope.photo.fileUrl;
+              console.log(photoId);
+              this.photoAlbumService.removePhoto(photoId).then((res) => {
+                this.filepickerService.remove(photoUrl, () => {
+                  console.log("photo removed");                  
+                });
+              });
+            }],
+            null,
+            ['Add to album', function($itemScope, $event, modelValue, text, $li){
+
+            }]
+          ];
+        }
+
 
       constructor(private photoAlbumService: photoalbum.Services.PhotoAlbumService,
                   private $rootScope: ng.IRootScopeService,
                   private $scope:ng.IScope,
-                  private $mdPanel){
+                  private $mdPanel,
+                  private filepickerService,
+                  private $state:ng.ui.IStateService){
           this.photos = this.photoAlbumService.listPhotos(this.$rootScope.username);
           //console.log(this.photos);
       }
@@ -137,7 +162,7 @@ namespace photoalbum.Controllers {
     export class PanelDialogCtrl{
 
       public closeDialog(){
-        this.mdPanelRef && this.mdPanelRef.close().then(function() {
+        this.mdPanelRef && this.mdPanelRef.close().then(() => {
           angular.element(document.querySelector('.demo-dialog-open-button')).focus();
           this.mdPanelRef.destroy();
         });
