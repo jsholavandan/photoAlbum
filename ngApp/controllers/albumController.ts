@@ -39,7 +39,7 @@ namespace photoalbum.Controllers{
           }
         }
 
-        console.log(this.album);
+      //  console.log(this.album);
 
         this.photoAlbumService.saveAlbum(this.album).then(() => {
           console.log("new cover added");
@@ -52,7 +52,10 @@ namespace photoalbum.Controllers{
       for(let i=0;i<this.selectedPhotos.length;i++){
         for(let j=this.album.photos.length-1;j>=0;j--){
           if(this.selectedPhotos[i] === this.album.photos[j]._id){
-            this.album.photos.splice(j, 1);
+            if(this.album.albumCover === this.album.photos[j].fileUrl){
+              this.album.albumCover = "ngApp/images/album.jpg";
+            }
+            this.album.photos.splice(j, 1);          
           }
         }
       }
