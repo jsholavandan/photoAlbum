@@ -2,6 +2,7 @@ namespace photoalbum.Controllers {
 
   export class PhotosController{
     public photos;
+    public albums;
     public panel;
 
 
@@ -39,18 +40,31 @@ namespace photoalbum.Controllers {
           ['Delete', ($itemScope, $event, modelValue, text, $li) => {
             let photoId = $itemScope.photo._id;
             let photoUrl = $itemScope.photo.fileUrl;
-            console.log(photoId);
             this.photoAlbumService.removePhoto(photoId).then((res) => {
+            //  this.checkAndDeleteInAlbums(photoId, photoUrl);
               this.filepickerService.remove(photoUrl, () => {
                 console.log("photo removed");
               });
             });
           }],
           null,
-          ['Add to album', function($itemScope, $event, modelValue, text, $li){
-
+          ['Add to album', ($itemScope, $event, modelValue, text, $li) => {
+            let photoId = $itemScope.photo._id;
+            this.addToAlbum(photoId, $event);
           }]
         ];
+      }
+
+      public addToAlbum(photoId, event){
+        this.$mdDialog.show({
+          locals:{photoId:photoId},
+          controller: ListAlbumsController,
+          templateUrl: 'ngApp/views/listAlbumsDialog.html',
+          parent: angular.element(document.body),
+          targetEvent: event,
+          controllerAs: 'controller',
+          clickOutsideToClose:true
+        });
       }
 
 
@@ -75,6 +89,7 @@ namespace photoalbum.Controllers {
                 private $state:ng.ui.IStateService,
                 private $mdDialog: angular.material.IDialogService){
         this.photos = this.photoAlbumService.listPhotos(this.$rootScope.username);
+        this.albums = this.photoAlbumService.listAlbums(this.$rootScope.username);
         //console.log(this.photos);
     }
   }

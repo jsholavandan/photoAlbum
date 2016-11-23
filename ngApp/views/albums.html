@@ -8,15 +8,15 @@
         </button>
         <md-menu-content width="2">
           <md-menuItem>
-            <md-button>
-              Add to an Album
+            <md-button ng-click="controller.createAlbum()">
+              Create New Album
             </md-button>
           </md-menu-item>
           <md-menuItem>
-            <md-button ng-click="controller.startSlideShow()">
-              Slide show
+            <md-button ng-click="controller.deleteAlbum()">
+              Delete Album
             </md-button>
-          </md-menu-item>
+          </md-menu-item>          
         </md-menu-content>
       </md-menu>
     </md-menu-bar>
@@ -24,7 +24,7 @@
   <div layout="row" flex class="mainDivCls">
     <div ng-repeat="album in controller.albums" class="imgDivCls">
       <div  layout="column">
-        <input type="checkbox" />
+        <input type="checkbox" ng-click="controller.addSelectedAlbums(album._id)" />
         <div class="photoDivCls" context-menu="controller.menuOptions()">
           <a ui-sref="album({id:album._id})">
             <img ng-src="{{ album.albumCover}}" id="albumImg" class="placeHolderImg" title="{{album.albumName}}"/>

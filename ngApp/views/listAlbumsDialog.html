@@ -1,0 +1,30 @@
+<md-dialog aria-label="Photo">
+  <form ng-cloak ng-submit="controller.updateAlbum()">
+    <md-toolbar >
+      <div class="md-toolbar-tools" >
+        <p><strong>Choose an Album</strong></p>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="controller.dialogCancel()">
+          <md-icon aria-label="Close dialog">close</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <ul>
+          <li ng-repeat="album in controller.albums">
+            <input type="radio" name="albumName" ng-click="controller.pickTheAlbum(album._id)">{{album.albumName}}
+          </li>
+        </ul>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <span flex></span>
+        <md-button type="submit">
+          Save
+        </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
