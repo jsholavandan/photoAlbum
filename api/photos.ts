@@ -15,10 +15,15 @@ router.get('/', (req, res) => {
   });
 });
 
+router.get('/:id', (req, res) => {
+  let photoId = req.params.id;
+  Photo.findById(photoId).then((photo) => {
+    res.json(photo);
+  });
+});
+
 router.post('/', (req, res) => {
-  var obj = req.body;
-  console.log("inside route");
-  console.log(obj);
+  let obj = req.body;
   Photo.create(obj).then((photo) => {
     res.json({message: 'Photo saved.'});
   }).catch((err) => {
@@ -34,6 +39,21 @@ router.delete('/:id', (req, res) => {
   }).catch((err) => {
     res.status(500);
     console.log(err);
+  });
+});
+
+router.post('/:id', (req, res) => {
+  let photoId = req.params.id;
+  Photo.findById(photoId).then((photo) => {
+    photo.caption = req.body.caption;
+
+    photo.save().then((updatedPhoto) => {
+      res.json(updatedPhoto);
+    }).catch((err) =>{
+      res.status(400).json(err);
+    });
+  }).catch((err) => {
+    res.sendStatus(404);
   });
 });
 

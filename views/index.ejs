@@ -20,7 +20,7 @@
          <md-icon><i class="material-icons">menu</i></md-icon>
        </md-button>
           <div layout-align=" center center" layout="row" flex>
-            <h1 class="align-center heading-text">Memories</h1></div>
+            <h1 class="align-center heading-text">Memories Forever</h1></div>
             <div layout-align="end end" layout="row"  >
               <md-button class="nav-btn" ng-click="controller.home()">Home</md-button>
               <div ng-if="currentUser === false" layout="row">
@@ -41,7 +41,7 @@
             </md-list>
           </md-sidenav>
           <md-content layout="column" flex>
-            <ui-view layout="column" flex></ui-view>
+            <ui-view></ui-view>
           </md-content>
         </div>
   </div>
@@ -64,7 +64,16 @@
 
 
   <script src="/ngApp/app.js"></script>
+  <!--  Controllers -->
   <script src="/ngApp/controllers/controllers.js"></script>
+  <script src="/ngApp/controllers/albumController.js"></script>
+  <script src="/ngApp/controllers/accountController.js"></script>
+  <script src="/ngApp/controllers/photosController.js"></script>
+  <script src="/ngApp/controllers/sideNavController.js"></script>
+  <script src="/ngApp/controllers/albumsController.js"></script>
+  <script src="/ngApp/controllers/createAlbumController.js"></script>
+
+  <!-- Services  -->
   <script src="/ngApp/services/services.js"></script>
 
 </body>

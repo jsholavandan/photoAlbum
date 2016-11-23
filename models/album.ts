@@ -2,8 +2,9 @@ import * as mongoose from 'mongoose';
 import {IPhoto} from './photo';
 
 export interface IAlbum extends mongoose.Document{
-  username: String;
-  albumName: String;
+  username: string;
+  albumName: string;
+  albumCover:string;
   photos: IPhoto[];
 }
 
@@ -14,6 +15,10 @@ let albumSchema = new mongoose.Schema({
     required:true
   },
   albumName:{
+    type:String,
+    required:true
+  },
+  albumCover:{
     type:String,
     required:true
   },

@@ -1,0 +1,43 @@
+<div layout="column">
+  <div class="titleCls"><p class="headerCls">Album : {{controller.album.albumName}}</p></div>
+  <div class="menuCls">
+    <md-menu-bar>
+      <md-menu>
+        <button ng-click="$mdOpenMenu()" class="btnCls">
+          Options
+        </button>
+        <md-menu-content width="2">
+          <md-menuItem>
+            <md-button ng-click="controller.deletePhotos()">
+              Delete
+            </md-button>
+          </md-menu-item>
+          <md-menuItem>
+            <md-button ng-click="controller.startSlideShow()">
+              Slide show
+            </md-button>
+          </md-menu-item>
+          <md-menuItem>
+            <md-button ng-click="controller.addCoverToAlbum()">
+              Add cover
+            </md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+    </md-menu-bar>
+  </div>
+  <br/>
+  <div class="textCls">
+    <h2>{{controller.album.albumName}}</h2>
+  </div>
+  <div layout="row" flex class="mainDivCls">
+    <div ng-repeat="photo in controller.album.photos" class="imgDivCls">
+      <div  layout="column">
+        <input type="checkbox" ng-click="controller.addSelectedPhotos(photo._id)" />
+        <div class="photoDivCls" context-menu="controller.menuOptions()">
+          <img ng-src="{{ photo.fileUrl | fpConvert: {w:400} }}" id="photoImg" class="placeHolderImg"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

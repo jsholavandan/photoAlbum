@@ -1,5 +1,5 @@
-<div layout="column" flex>
-  <div class="titleCls"><p class="headerCls">Photos</p></div>
+<div layout="column">
+  <div class="titleCls"><p class="headerCls">Albums</p></div>
   <div class="menuCls">
     <md-menu-bar>
       <md-menu>
@@ -22,13 +22,22 @@
     </md-menu-bar>
   </div>
   <div layout="row" flex class="mainDivCls">
-    <div ng-repeat="photo in controller.photos" class="imgDivCls">
+    <div ng-repeat="album in controller.albums" class="imgDivCls">
       <div  layout="column">
         <input type="checkbox" />
         <div class="photoDivCls" context-menu="controller.menuOptions()">
-          <img ng-src="{{ photo.fileUrl | fpConvert: {w:400} }}" id="photoImg" class="placeHolderImg" alt="{{photo.caption}}" title="{{photo.caption}}"/>
+          <a ui-sref="album({id:album._id})">
+            <img ng-src="{{ album.albumCover}}" id="albumImg" class="placeHolderImg" title="{{album.albumName}}"/>
+          </a>
         </div>
+      </div>
+
+    </div>
+    <div class="imgDivCls">
+      <div class="placeholderDivCls">
+        <img src="ngApp/images/album.jpg" alt="new album" title="Create new album" class="placeHolderImg" ng-click="controller.createAlbum()">
       </div>
     </div>
   </div>
+
 </div>

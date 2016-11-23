@@ -25,23 +25,45 @@ namespace photoalbum.Services {
       private PhotoResource;
       private AlbumResource;
 
+      //Photo service
       public listPhotos(username){
         return this.PhotoResource.query({username:username});
       }
 
+      public getPhoto(id){
+        return this.PhotoResource.get({id:id});
+      }
+
       public savePhoto(photoObj){
         //console.log(photoObj);
-        return this.PhotoResource.save(photoObj).$promise;
+        return this.PhotoResource.save({id:photoObj._id}, photoObj).$promise;
       }
 
       public removePhoto(photoId){
         return this.PhotoResource.remove({id:photoId}).$promise;
       }
 
+      //Album service
+      public listAlbums(username){
+        return this.AlbumResource.query({username:username});
+      }
+
+      public getAlbum(id){
+        return this.AlbumResource.get({id:id});
+      }
+
+      public saveAlbum(albumObj){
+        return this.AlbumResource.save({id:albumObj._id}, albumObj).$promise;
+      }
+
+      public removeAlbum(albumId){
+        return this.AlbumResource.remove({id:albumId}).$promise;
+      }
+
 
       constructor(private $resource: ng.resource.IResourceService){
         this.PhotoResource = $resource('/api/photos/:id');
-        this.AlbumResource = $resource('/api/albums');
+        this.AlbumResource = $resource('/api/albums/:id');
       }
     }
     angular.module('photoalbum').service("photoAlbumService", PhotoAlbumService);

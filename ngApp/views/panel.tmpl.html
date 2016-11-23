@@ -1,7 +1,7 @@
 <div role="dialog" aria-label="Eat me!" layout="column" layout-align="center center">
   <md-toolbar layout="row" class="md-toolbar-tools">
     <div>
-      <h3>slideshow</h3>
+      <h3>Slide Show</h3>
     </div>
     <span flex></span>
     <div>
@@ -11,13 +11,13 @@
     </div>
   </md-toolbar>
   <div layout="column" flex>
-    <div class="demo-dialog-content" ng-controller="PhotosController as controller" id="slides_control">
+    <div class="demo-dialog-content" id="slides_control">
       <div>
           <uib-carousel interval="0" active="0">
-              <uib-slide ng-repeat="photo in controller.photos" index="$index">
+              <uib-slide ng-repeat="photo in ctrl.photos" index="$index">
                   <img ng-src="{{photo.fileUrl}}" style="margin:auto;">
                   <div class="carousel-caption">
-                      <h4>{{photo.fileName}}</h4>
+                      <h4>{{photo.caption}}</h4>
                   </div>
               </uib-slide>
           </uib-carousel>

@@ -36,6 +36,24 @@ namespace photoalbum {
               templateUrl:'ngApp/views/photos.html',
               controller: photoalbum.Controllers.PhotosController,
               controllerAs: 'controller'
+            })
+            .state('albums', {
+              url:'/albums',
+              templateUrl:'ngApp/views/albums.html',
+              controller: photoalbum.Controllers.AlbumsController,
+              controllerAs: 'controller'
+            })
+            .state("createAlbum", {
+              url:"/createAlbum",
+              templateUrl: "ngApp/views/createAlbum.html",
+              controller: photoalbum.Controllers.CreateAlbumController,
+              controllerAs: 'controller'
+            })
+            .state("album", {
+              url:"/album/:id",
+              templateUrl:'ngApp/views/album.html',
+              controller: photoalbum.Controllers.AlbumController,
+              controllerAs:'controller'
             });
 
         // Handle request for non-existent route

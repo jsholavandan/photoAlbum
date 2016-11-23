@@ -18,14 +18,7 @@ h5{
   text-align: center;
 }
 
-.titleCls{
-  height:20px;
-  background-color: yellow;
-  padding:0px;
-  text-align: center;
-  font-weight: bold;
 
-}
 /*
 .menuCls{
   height: 15px;
@@ -41,8 +34,8 @@ h5{
 }
 
 .photoDivCls{
-  height:100%;
-  width: 100%;
+  height:130px;
+  width: 150px;
 }
 
 .errCls{
@@ -52,21 +45,45 @@ h5{
 
 
 
-#photoImg{
-  height:120px;
-  width: 120px;
+.placeHolderImg{
+  height:100%;
+  width: 100%;
+}
+
+.placeholderDivCls{
+  height:100%;
+  width:100%;
+  cursor:pointer;
 }
 
 .imgDivCls{
   height:150px;
   width:150px;
   overflow:hidden;
-  border: 1px solid yellow;
-  margin: 5px;
+  border: 1px solid grey;
+  margin: 10px;
 }
+
+.textCls{
+  font-size:10px;
+  margin-left:15px;
+}
+
+.formDivCls{
+  margin:15px 0 10px 15px;
+}
+
+.buttonCls{
+  margin-left:10px;
+  font-size: 11px;
+  height: 20px;
+  padding:0px 3px 0px 3px;
+}
+
 
 .mainDivCls{
   margin-top: 15px;
+  margin-left:10px;
 }
 
 h1{
@@ -172,10 +189,6 @@ md-menu-content.md-menu-bar-menu.md-dense .md-button{
 md-menu-content.md-menu-bar-menu.md-dense{
   padding:0px;
   width: 120px;
-}
-
-.menuCls{
-  background-color: yellow;
 }
 
 .btnCls{
@@ -329,10 +342,65 @@ md-menu-bar button{
 md-menu-content.md-menu-bar-menu.md-dense .md-button{
   line-height: 0px;
   padding:0px;
-
 }
 
 md-menu-content.md-menu-bar-menu.md-dense .md-button span{
-  
   padding:0px;
+}
+
+/* */
+md-dialog{
+  min-width:140px;
+  max-width:40%;
+}
+/*
+.editToolbar{
+  max-height: 20px;
+  min-height:20px;
+  height:20px;
+}
+*/
+
+.md-dialog-content>div{
+  width: 120px;
+  height:120px;
+}
+
+.md-dialog-content>div img{
+  width:100%;
+  height:100%;
+}
+
+md-dialog md-dialog-actions .md-button{
+  font-size: 10px;
+  margin-top:3px;
+  min-height: 20px;
+}
+
+md-dialog md-dialog-actions{
+  min-height: 20px;
+}
+
+md-dialog md-dialog-content{
+  overflow:hidden;
+  margin-bottom: 0px;
+}
+
+/* */
+.divClass{
+  padding:0px;
+}
+
+.headerCls{
+  text-align: center;
+  font-weight: bold;
+}
+
+.titleCls{
+  height:20px;
+  background-color: yellow;
+  padding-top:1px;
+}
+.menuCls{
+  background-color: yellow;
 }
