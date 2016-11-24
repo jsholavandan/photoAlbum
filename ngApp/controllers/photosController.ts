@@ -32,20 +32,19 @@ namespace photoalbum.Controllers {
 
       public menuOptions(){
         return [
-          ['Edit', ($itemScope, $event, modelValue, text, $li) => {
-            let photoId = $itemScope.photo._id;
-            this.editPhoto(photoId, $event);
-          }],
-          null,
           ['Delete', ($itemScope, $event, modelValue, text, $li) => {
             let photoId = $itemScope.photo._id;
             let photoUrl = $itemScope.photo.fileUrl;
-            this.photoAlbumService.removePhoto(photoId).then((res) => {
-            //  this.checkAndDeleteInAlbums(photoId, photoUrl);
+            this.photoAlbumService.removePhoto(photoId).then((res) => {            
               this.filepickerService.remove(photoUrl, () => {
                 console.log("photo removed");
               });
             });
+          }],
+          null,
+          ['Add Caption', ($itemScope, $event, modelValue, text, $li) => {
+            let photoId = $itemScope.photo._id;
+            this.editPhoto(photoId, $event);
           }],
           null,
           ['Add to album', ($itemScope, $event, modelValue, text, $li) => {

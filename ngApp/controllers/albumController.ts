@@ -31,31 +31,46 @@ namespace photoalbum.Controllers{
       this.$mdPanel.open(config);
     }
 
-    public addCoverToAlbum(){
-      if(this.selectedPhotos.length > 0) {
+    public addCoverToAlbum(photoId){
+      if(photoId === null && this.selectedPhotos.length > 0){
+        photoId = this.selectedPhotos[0];
+      }
+
+      if(photoId !== null) {
         for(let i=0;i<this.album.photos.length;i++){
           if(this.album.photos[i]._id === this.selectedPhotos[0]){
             this.album.albumCover = this.album.photos[i].fileUrl;
           }
         }
-
-      //  console.log(this.album);
-
         this.photoAlbumService.saveAlbum(this.album).then(() => {
           console.log("new cover added");
         });
+      }else{
+        this.$window.alert("Please select a Photo to add as a cover.");
       }
-
     }
 
-    public deletePhotos(){
+    public menuOptions(){
+      return [
+        ['Delete', ($itemScope, $event, modelValue, text, $li) => {
+          this.deletePhotos($itemScope.photo._id);
+        }],
+        null,
+        ['Add as Album Cover', ($itemScope, $event, modelValue, text, $li) => {
+          let photoId = $itemScope.photo._id;
+          this.addCoverToAlbum(photoId);
+        }],
+      ];
+    }
+
+    public deletePhotos(id){
       for(let i=0;i<this.selectedPhotos.length;i++){
         for(let j=this.album.photos.length-1;j>=0;j--){
           if(this.selectedPhotos[i] === this.album.photos[j]._id){
             if(this.album.albumCover === this.album.photos[j].fileUrl){
               this.album.albumCover = "ngApp/images/album.jpg";
             }
-            this.album.photos.splice(j, 1);          
+            this.album.photos.splice(j, 1);
           }
         }
       }
@@ -68,7 +83,8 @@ namespace photoalbum.Controllers{
     constructor(private photoAlbumService:photoalbum.Services.PhotoAlbumService,
                 private $rootScope:ng.IRootScopeService,
                 private $stateParams:ng.ui.IStateParamsService,
-                private $mdPanel:angular.material.IPanelService){
+                private $mdPanel:angular.material.IPanelService,
+                private $window:ng.IWindowService){
       let albumId = this.$stateParams["id"];
       console.log(albumId);
       this.album = this.photoAlbumService.getAlbum(albumId);
