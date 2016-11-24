@@ -35,7 +35,7 @@ namespace photoalbum.Controllers {
           ['Delete', ($itemScope, $event, modelValue, text, $li) => {
             let photoId = $itemScope.photo._id;
             let photoUrl = $itemScope.photo.fileUrl;
-            this.photoAlbumService.removePhoto(photoId).then((res) => {            
+            this.photoAlbumService.removePhoto(photoId).then((res) => {
               this.filepickerService.remove(photoUrl, () => {
                 console.log("photo removed");
               });
@@ -79,6 +79,11 @@ namespace photoalbum.Controllers {
         });
       }
 
+      public refreshData(){
+        console.log("refresh data");
+        this.photos = this.photoAlbumService.listPhotos(this.$rootScope.username);
+      }
+
 
     constructor(private photoAlbumService: photoalbum.Services.PhotoAlbumService,
                 private $rootScope: ng.IRootScopeService,
@@ -89,6 +94,9 @@ namespace photoalbum.Controllers {
                 private $mdDialog: angular.material.IDialogService){
         this.photos = this.photoAlbumService.listPhotos(this.$rootScope.username);
         this.albums = this.photoAlbumService.listAlbums(this.$rootScope.username);
+        this.$scope.$on("NewPhoto", () =>{
+          this.refreshData();
+        });
         //console.log(this.photos);
     }
   }
