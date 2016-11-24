@@ -14,7 +14,7 @@
 </head>
 
 <body ng-cloak ng-controller="HomeController as controller" layout="column">
-  <div layout="column" flex>
+  <div layout="column" flex layout-fill>
      <md-toolbar layout="row" layout-align="center center" class="md-toolbartools md-medium-tall" >
        <md-button ng-click="controller.toggleMenu('left')" hide-gt-sm ng-if="currentUser !== false">
          <md-icon><i class="material-icons">menu</i></md-icon>
@@ -32,7 +32,7 @@
               </div>
             </div>
         </md-toolbar>
-        <div layout="row" flex ng-controller="SidenavController as sideController">
+        <div layout="row" flex ng-controller="SidenavController as sideController" layout-fill>
           <md-sidenav ng-if="currentUser !== false" class="md-sidenav-left" md-is-locked-open="$mdMedia('gt-sm')" md-component-id="left" layout-align="start center" >
             <md-list>
               <md-list-item><md-button class="nav-btn" ng-click="sideController.pickFile()">Upload</md-button></md-list-item>
@@ -40,8 +40,8 @@
               <md-list-item><md-button class="nav-btn" ng-click="sideController.albums()">Albums</md-button></md-list-item>
             </md-list>
           </md-sidenav>
-          <md-content layout="column" flex>
-            <ui-view></ui-view>
+          <md-content layout="column" layout-fill flex>
+            <ui-view layout="column" layout-fill flex></ui-view>
           </md-content>
         </div>
   </div>

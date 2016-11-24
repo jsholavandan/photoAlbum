@@ -27,10 +27,30 @@ h5{
   margin-bottom: 5px;
 }
 */
+
+.subHeaderCls{
+  position: relative;
+  left:0;
+  top:0;
+  border:1px solid red;
+  height:100%;
+  padding-top:12%;
+}
+
+.homeImgCls{
+  position: relative;
+  left:0;
+  top:0;
+  height:100%;
+  padding-top:9%;
+  text-align:center;
+}
+
 #homeImg{
   border-radius:155px /100px;
   border: 2px solid yellow;
-  margin-top: 30px;
+  margin: auto;
+
 }
 
 .photoDivCls{
