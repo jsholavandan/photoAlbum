@@ -1,8 +1,8 @@
 <md-dialog aria-label="Photo">
   <form ng-cloak ng-submit="controller.savePhoto()">
-    <md-toolbar >
+    <md-toolbar  class="dialogToolbarCls">
       <div class="md-toolbar-tools" >
-        <p><strong>Edit Caption</strong></p>
+        <p class="headingCls">Edit Caption</p>
         <span flex></span>
         <md-button class="md-icon-button" ng-click="controller.dialogCancel()">
           <md-icon aria-label="Close dialog">close</md-icon>
@@ -11,11 +11,11 @@
     </md-toolbar>
 
     <md-dialog-content>
-      <div class="md-dialog-content">
-        <h6>{{controller.photo.fileName}}</h6>
-        <div>
-          <img  ng-src="{{controller.photo.fileUrl}}" class="photoImg">
-        </div>
+      <div class="md-dialog-content ">
+          <div>
+            <img  ng-src="{{controller.photo.fileUrl}}" >
+          </div>        
+        <br/>
         <label>Caption :</label>
         <input ng-model="controller.photo.caption">
       </div>

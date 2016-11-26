@@ -12,24 +12,30 @@ namespace photoalbum.Controllers {
     }
 
     public deleteAlbum(){
-      for(let i=0;i<this.selectedAlbums.length;i++){
-        this.photoAlbumService.removeAlbum(this.selectedAlbums[i]).then(() => {
-          console.log("Album removed.");
-        }).catch((err) =>{
-          console.log(err);
-        });
+      if(this.selectedAlbums.length > 0){
+        for(let i=0;i<this.selectedAlbums.length;i++){
+          this.photoAlbumService.removeAlbum(this.selectedAlbums[i]).then(() => {
+            this.$window.alert("Album removed.");
+          }).catch((err) =>{
+            console.log(err);
+          });
+        }
+        this.albums = this.photoAlbumService.listAlbums(this.$rootScope.username);
+      }else{
+        this.$window.alert("please choose an album to delete");
       }
-      this.albums = this.photoAlbumService.listAlbums(this.$rootScope.username);
     }
+
+
 
     constructor(private photoAlbumService: photoalbum.Services.PhotoAlbumService,
                 private $rootScope:ng.IRootScopeService,
-                private $state: ng.ui.IStateService){
+                private $state: ng.ui.IStateService,
+                private $window:ng.IWindowService){
       this.albums = this.photoAlbumService.listAlbums(this.$rootScope.username);
     }
 
   }
 
   angular.module('photoalbum').controller('AlbumsController', AlbumsController);
-
 }

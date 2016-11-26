@@ -64,13 +64,24 @@ namespace photoalbum.Controllers{
     }
 
     public deletePhotos(id){
-      for(let i=0;i<this.selectedPhotos.length;i++){
+      if(id !== null){
         for(let j=this.album.photos.length-1;j>=0;j--){
-          if(this.selectedPhotos[i] === this.album.photos[j]._id){
+          if(id === this.album.photos[j]._id){
             if(this.album.albumCover === this.album.photos[j].fileUrl){
               this.album.albumCover = "ngApp/images/album.jpg";
             }
             this.album.photos.splice(j, 1);
+          }
+        }
+      }else{
+        for(let i=0;i<this.selectedPhotos.length;i++){
+          for(let j=this.album.photos.length-1;j>=0;j--){
+            if(this.selectedPhotos[i] === this.album.photos[j]._id){
+              if(this.album.albumCover === this.album.photos[j].fileUrl){
+                this.album.albumCover = "ngApp/images/album.jpg";
+              }
+              this.album.photos.splice(j, 1);
+            }
           }
         }
       }
