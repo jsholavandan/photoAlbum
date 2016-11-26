@@ -10,6 +10,8 @@ namespace photoalbum.Services {
       }
 
       public signUp(user){
+        console.log("here");
+        console.log(user);
         return this.RegisterResource.save(user).$promise;
       }
 

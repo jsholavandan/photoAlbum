@@ -38,11 +38,13 @@ namespace photoalbum.Controllers {
     }
 
     public register(){
-    //  console.log(this.user);
+      this.errorMsg = "";      
       this.accountService.signUp(this.user).then((data) => {
-        //console.log(data);
+        console.log(data);
         this.$state.go('login');
-      })
+      }).catch((err) =>{
+        this.errorMsg = "Error occured. Please try again."
+      });
     }
 
     constructor(

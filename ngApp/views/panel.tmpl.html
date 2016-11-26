@@ -1,33 +1,27 @@
 <div role="dialog" aria-label="Eat me!" layout="column" layout-align="center center">
-  <md-toolbar layout="row" class="md-toolbar-tools">
-    <div>
-      <h3>Slide Show</h3>
-    </div>
-    <span flex></span>
-    <div>
-      <md-button class="md-icon-button" ng-click="ctrl.closeDialog()">
-        <md-icon><i class="material-icons">clear</i></md-icon>
-      </md-button>
-    </div>
-  </md-toolbar>
-  <div layout="column" flex>
-    <div class="demo-dialog-content" id="slides_control">
-      <div>
-          <uib-carousel interval="0" active="0">
-              <uib-slide ng-repeat="photo in ctrl.photos" index="$index">
-                  <img ng-src="{{photo.fileUrl}}" style="margin:auto;">
-                  <div class="carousel-caption">
-                      <h4>{{photo.caption}}</h4>
-                  </div>
-              </uib-slide>
-          </uib-carousel>
+  <form  class="formCls">
+    <md-toolbar  class="dialogToolbarCls">
+      <div class="md-toolbar-tools" >
+        <p class="headingCls">Slide Show</p>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="ctrl.closeDialog()">
+          <md-icon aria-label="Close window">close</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <div layout="column" flex>
+      <div class="demo-dialog-content" id="slides_control">
+        <div>
+            <uib-carousel interval="0" active="0">
+                <uib-slide ng-repeat="photo in ctrl.photos" index="$index">
+                    <img ng-src="{{photo.fileUrl}}" style="margin:auto;">
+                    <div class="carousel-caption">
+                        <h4>{{photo.caption}}</h4>
+                    </div>
+                </uib-slide>
+            </uib-carousel>
+        </div>
       </div>
     </div>
-
-<!--  <div layout="row" class="demo-dialog-button">
-    <md-button md-autofocus flex class="md-primary" ng-click="ctrl.closeDialog()">
-      Close
-    </md-button>
-  </div> -->
-</div>
+  </form>
 </div>

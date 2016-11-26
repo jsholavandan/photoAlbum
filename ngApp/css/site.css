@@ -43,6 +43,10 @@ md-toolbar{
   font-size:medium;
 }
 
+.formCls{
+  width:100%;
+}
+
 
 /*
 .menuCls{
@@ -56,8 +60,7 @@ md-toolbar{
 .subHeaderCls{
   position: relative;
   left:0;
-  top:0;
-  border:1px solid red;
+  top:0;  
   height:100%;
   padding-top:12%;
 }

@@ -13,9 +13,11 @@ router.post('/register', function(req, res, next){
 
   user.save(function(err, userSaved){
     if(err){
-      res.send(err);
+      console.log(err);
+      res.sendStatus(500);
+    }else{
+      res.json({message:'Registration is complete. Please login.'});
     }
-    res.send('Registration is complete. Please login.');
   });
 
 });
