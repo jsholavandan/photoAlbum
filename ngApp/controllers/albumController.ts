@@ -38,7 +38,7 @@ namespace photoalbum.Controllers{
 
       if(photoId !== null) {
         for(let i=0;i<this.album.photos.length;i++){
-          if(this.album.photos[i]._id === this.selectedPhotos[0]){
+          if(this.album.photos[i]._id === photoId){
             this.album.albumCover = this.album.photos[i].fileUrl;
           }
         }
