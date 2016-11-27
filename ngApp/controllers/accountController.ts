@@ -6,6 +6,7 @@ namespace photoalbum.Controllers {
     };
     public user = {};
     public errorMsg;
+    public alert = {};
 
     public setToken(data){
       this.$window.localStorage.setItem('token', JSON.stringify(data.token));
@@ -38,20 +39,26 @@ namespace photoalbum.Controllers {
     }
 
     public register(){
-      this.errorMsg = "";      
+      this.errorMsg = "";
       this.accountService.signUp(this.user).then((data) => {
         console.log(data);
         this.$state.go('login');
       }).catch((err) =>{
-        this.errorMsg = "Error occured. Please try again."
+        //  this.errorMsg = "Error occured. Please try again."
+        this.Flash.create('danger', "Error occured. Please try again.");
       });
+    }
+
+    public closeAlert(){
+      this.alert = {};
     }
 
     constructor(
       private accountService:photoalbum.Services.AccountService,
       private $window:ng.IWindowService,
       private $state:ng.ui.IStateService,
-      private $rootScope:ng.IRootScopeService
+      private $rootScope:ng.IRootScopeService,
+      private Flash
     ){
 
     }
