@@ -171,7 +171,7 @@ input.form-control {
 
 .marg-BottomCls{
   /*  margin-top: 5%; */
-  
+
   height:45px;
 }
 
@@ -601,3 +601,11 @@ div.close {
 }
 
 /* end */
+
+.ng-invalid.ng-touched {
+  background-color: #FA787E;
+}
+.error {
+  color:red;
+  font-size:10px;
+}

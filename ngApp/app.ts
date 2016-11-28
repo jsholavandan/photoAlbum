@@ -1,6 +1,6 @@
 namespace photoalbum {
 
-    angular.module('photoalbum', ['ngFlash', 'ngAnimate', 'ui.router', 'ngResource', 'ui.bootstrap', 'ngMaterial','angular-filepicker','ui.bootstrap.contextMenu']).config((
+    angular.module('photoalbum', ['ngFlash', 'ngPassword', 'ngAnimate', 'ui.router', 'ngResource', 'ui.bootstrap', 'ngMaterial','ngMessages','angular-filepicker','ui.bootstrap.contextMenu']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
         $locationProvider: ng.ILocationProvider,
