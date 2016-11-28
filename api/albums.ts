@@ -18,6 +18,7 @@ router.get('/:id', (req, res) => {
   let albumId = req.params.id;
   console.log(albumId);
   Album.findById(albumId).populate('photos').then((album) =>{
+    console.log(album);
     res.json(album);
   });
 });
@@ -47,7 +48,7 @@ router.post('/:id', (req, res) => {
   let photosArray = req.body.photos;
   Album.findById(albumId).then((album) => {
     album.albumCover = req.body.albumCover;
-    album.photos = photosArray;      
+    album.photos = photosArray;
     album.save().then((updatedAlbum) => {
       res.json(updatedAlbum);
     }).catch((err) => {

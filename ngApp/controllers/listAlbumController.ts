@@ -22,9 +22,11 @@ namespace photoalbum.Controllers {
 
 
       public updateAlbum(){
+
         this.photoAlbumService.getAlbum(this.selectedAlbum).$promise.then((album) =>{
           let photoExists = this.checkIfPhotoExists(album);
-          console.log(photoExists);
+          console.log("photo exists " + photoExists);
+          console.log(album);
           if(!photoExists){
             album.photos.push(this.photo);
             this.photoAlbumService.saveAlbum(album).then(() => {
@@ -32,6 +34,9 @@ namespace photoalbum.Controllers {
                 this.$mdDialog.hide();
             });
           }
+        }).catch((err) => {
+          console.log("error occured");
+          console.log(err);
         });
 
         this.$mdDialog.hide();
@@ -50,7 +55,7 @@ namespace photoalbum.Controllers {
                   private $rootScope:ng.IRootScopeService,
                   private $mdDialog: angular.material.IDialogService){
         this.albums = this.photoAlbumService.listAlbums(this.$rootScope.username);
-        this.photo = this.photoAlbumService.getPhoto(this.photoId);
+        this.photo = this.photoAlbumService.getPhoto(this.photoId);        
       }
     }
 

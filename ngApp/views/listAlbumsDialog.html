@@ -1,5 +1,5 @@
 <md-dialog aria-label="Photo">
-  <form ng-cloak ng-submit="controller.updateAlbum()">
+  <form ng-cloak ng-submit="albumForm.$valid && controller.updateAlbum()" name="albumForm">
     <md-toolbar  class="dialogToolbarCls">
       <div class="md-toolbar-tools" >
         <p class="headingCls">Choose an Album</p>
@@ -14,7 +14,10 @@
       <div class="md-dialog-content albumListCls">
         <ul>
           <li ng-repeat="album in controller.albums">
-            <input type="radio" name="albumName" ng-click="controller.pickTheAlbum(album._id)" ng-checked="true">{{album.albumName}}
+            <input type="radio" name="albumName" ng-value="album._id" ng-model="controller.selectedAlbum" ng-click="controller.pickTheAlbum(album._id)" ng-checked="true" required>{{album.albumName}}
+            <span ng-show="albumForm.albumName.$touched && albumForm.albumName.$error.required" class="error">
+              Album is required.
+            </span>
           </li>
         </ul>
       </div>

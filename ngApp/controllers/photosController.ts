@@ -37,7 +37,8 @@ namespace photoalbum.Controllers {
             let photoUrl = $itemScope.photo.fileUrl;
             this.photoAlbumService.removePhoto(photoId).then((res) => {
               this.filepickerService.remove(photoUrl, () => {
-                console.log("photo removed");
+                this.$window.alert("photo removed");
+                this.photos = this.photoAlbumService.listPhotos(this.$rootScope.username);
               });
             });
           }],
@@ -91,7 +92,8 @@ namespace photoalbum.Controllers {
                 private $mdPanel: angular.material.IPanelService,
                 private filepickerService,
                 private $state:ng.ui.IStateService,
-                private $mdDialog: angular.material.IDialogService){
+                private $mdDialog: angular.material.IDialogService,
+                private $window: ng.IWindowService){
         this.photos = this.photoAlbumService.listPhotos(this.$rootScope.username);
         this.albums = this.photoAlbumService.listAlbums(this.$rootScope.username);
         this.$scope.$on("NewPhoto", () =>{

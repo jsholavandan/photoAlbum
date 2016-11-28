@@ -231,7 +231,7 @@ md-sidenav{
 
 /*   */
 .md-open-menu-container.md-active{
-    background-color: yellow;
+  //  background-color: yellow;
 }
 
 md-menu-bar button{
@@ -257,7 +257,7 @@ md-menu-item button{
   font-size: 10px;
 }
 
-md-menu button:active{
+md-menu button:hover{
   background-color: yellow;
 }
 md-menu-item{
@@ -298,6 +298,8 @@ md-menu-content {
   padding: 0 15px;
   width: 100%;
 }
+
+
 
 
 
@@ -608,4 +610,12 @@ div.close {
 .error {
   color:red;
   font-size:10px;
+}
+
+.myInputClass{
+  width:105px;
+}
+
+.createDivCls{
+  height: 45px;
 }

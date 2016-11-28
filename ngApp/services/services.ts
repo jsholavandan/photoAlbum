@@ -51,6 +51,7 @@ namespace photoalbum.Services {
       }
 
       public getAlbum(id){
+        console.log("from services " +id);
         return this.AlbumResource.get({id:id});
       }
 
