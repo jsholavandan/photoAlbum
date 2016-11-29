@@ -23,8 +23,8 @@
   </div>
   <div layout="row" flex class="mainDivCls">
     <div ng-repeat="album in controller.albums" class="imgDivCls">
-      <div  layout="column">
-        <input type="checkbox" ng-click="controller.addSelectedAlbums(album._id)" />
+      <div  layout="column">      
+        <input type="checkbox" ng-change="controller.addSelectedAlbums(album._id, album.checked)" ng-model="album.checked" ng-true-value="true" ng-false-value="false"/>
         <div class="photoDivCls">
           <a ui-sref="album({id:album._id})">
             <img ng-src="{{ album.albumCover}}" id="albumImg" class="placeHolderImg" title="{{album.albumName}}"/>

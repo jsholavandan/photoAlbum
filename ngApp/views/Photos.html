@@ -11,7 +11,7 @@
             <md-button ng-click="controller.startSlideShow()">
               Slide show
             </md-button>
-          </md-menu-item>          
+          </md-menu-item>
           <md-menuItem>
             <md-button ng-click="controller.addToAlbum(null,null)">
             Add to Album
@@ -24,7 +24,7 @@
   <div layout="row" flex class="mainDivCls">
     <div ng-repeat="photo in controller.photos" class="imgDivCls">
       <div  layout="column">
-        <input type="checkbox" ng-click="controller.addSelectedPhotos(photo._id)" />
+        <input type="checkbox" ng-change="controller.addSelectedPhotos(photo._id, photo.checked)" ng-model="photo.checked" ng-true-value="true" ng-false-value="false"/>
         <div class="photoDivCls" context-menu="controller.menuOptions()">
           <img ng-src="{{ photo.fileUrl | fpConvert: {w:400} }}" id="photoImg" class="placeHolderImg" alt="{{photo.caption}}" title="{{photo.caption}}"/>
         </div>

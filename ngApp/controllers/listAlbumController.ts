@@ -22,14 +22,13 @@ namespace photoalbum.Controllers {
 
 
       public updateAlbum(){
-
         this.photoAlbumService.getAlbum(this.selectedAlbum).$promise.then((album) =>{
           for(let i=0;i<this.photoIdArr.length;i++){
             let photoExists = this.checkIfPhotoExists(album, this.photoIdArr[i]);
             if(!photoExists){
               for(let j=0;j<this.photos.length;j++){
                 if(this.photos[j]._id === this.photoIdArr[i]){
-                  album.photos.push(this.photos[j]);
+                  album.photos.push(this.photos[j]);                  
                 }
               }
             }

@@ -7,19 +7,28 @@ namespace photoalbum.Controllers {
       this.$state.go('createAlbum');
     }
 
-    public addSelectedAlbums(id){
-      this.selectedAlbums.push(id);
+    public addSelectedAlbums(id, selected){
+      if(selected){
+        if(this.selectedAlbums.indexOf(id) === -1){
+          this.selectedAlbums.push(id);
+        }
+      }else{
+        let idx = this.selectedAlbums.indexOf(id);
+        if(idx > -1){
+          this.selectedAlbums.splice(idx, 1);
+        }
+      }
     }
 
     public deleteAlbum(){
       if(this.selectedAlbums.length > 0){
         for(let i=0;i<this.selectedAlbums.length;i++){
           this.photoAlbumService.removeAlbum(this.selectedAlbums[i]).then(() => {
-            this.$window.alert("Album removed.");
           }).catch((err) =>{
             console.log(err);
           });
         }
+        this.$window.alert("Album removed.");
         this.albums = this.photoAlbumService.listAlbums(this.$rootScope.username);
       }else{
         this.$window.alert("please choose an album to delete");

@@ -619,3 +619,17 @@ div.close {
 .createDivCls{
   height: 45px;
 }
+
+.mainPageImg{
+  height:120px;
+  width:150px;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  border:1px solid blue;
+  border-radius: 15px;
+}
+
+.mainPageDiv{
+
+}

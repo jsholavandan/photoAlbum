@@ -4,8 +4,17 @@ namespace photoalbum.Controllers{
     public album;
     public selectedPhotos = [];
 
-    public addSelectedPhotos(id){
-      this.selectedPhotos.push(id);
+    public addSelectedPhotos(id, selected){
+      if(selected){
+        if(this.selectedPhotos.indexOf(id) === -1){
+          this.selectedPhotos.push(id);
+        }
+      }else{
+        let idx = this.selectedPhotos.indexOf(id);
+        if(idx > -1){
+          this.selectedPhotos.splice(idx, 1);
+        }
+      }
     }
 
     public startSlideShow(){

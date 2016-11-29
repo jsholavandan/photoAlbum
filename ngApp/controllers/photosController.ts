@@ -6,8 +6,18 @@ namespace photoalbum.Controllers {
     public panel;
     public selectedPhotos= [];
 
-    public addSelectedPhotos(id){
-      this.selectedPhotos.push(id);
+
+    public addSelectedPhotos(id, selected){
+      if(selected){
+        if(this.selectedPhotos.indexOf(id) === -1){
+          this.selectedPhotos.push(id);
+        }
+      }else{
+        let idx = this.selectedPhotos.indexOf(id);
+        if(idx > -1){
+          this.selectedPhotos.splice(idx, 1);
+        }
+      }
     }
 
     public startSlideShow(){
@@ -69,7 +79,7 @@ namespace photoalbum.Controllers {
         }
         if(photoIdArr.length > 0){
           this.$mdDialog.show({
-            locals:{photoIdArr:this.selectedPhotos},
+            locals:{photoIdArr:photoIdArr},
             controller: ListAlbumsController,
             templateUrl: 'ngApp/views/listAlbumsDialog.html',
             parent: angular.element(document.body),
@@ -80,7 +90,7 @@ namespace photoalbum.Controllers {
           this.selectedPhotos = [];
         }else{
           this.$window.alert("Please select photos to add to album.");
-        }        
+        }
       }
 
 
@@ -109,7 +119,8 @@ namespace photoalbum.Controllers {
                 private filepickerService,
                 private $state:ng.ui.IStateService,
                 private $mdDialog: angular.material.IDialogService,
-                private $window: ng.IWindowService){
+                private $window: ng.IWindowService,
+              private $element:ng.IRootElementService){
         this.photos = this.photoAlbumService.listPhotos(this.$rootScope.username);
         this.albums = this.photoAlbumService.listAlbums(this.$rootScope.username);
         this.$scope.$on("NewPhoto", () =>{
