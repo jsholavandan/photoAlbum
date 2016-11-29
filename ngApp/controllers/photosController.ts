@@ -4,7 +4,11 @@ namespace photoalbum.Controllers {
     public photos;
     public albums;
     public panel;
+    public selectedPhotos= [];
 
+    public addSelectedPhotos(id){
+      this.selectedPhotos.push(id);
+    }
 
     public startSlideShow(){
         let position = this.$mdPanel.newPanelPosition()
@@ -55,16 +59,28 @@ namespace photoalbum.Controllers {
         ];
       }
 
+
       public addToAlbum(photoId, event){
-        this.$mdDialog.show({
-          locals:{photoId:photoId},
-          controller: ListAlbumsController,
-          templateUrl: 'ngApp/views/listAlbumsDialog.html',
-          parent: angular.element(document.body),
-          targetEvent: event,
-          controllerAs: 'controller',
-          clickOutsideToClose:true
-        });
+        let photoIdArr = [];
+        if(photoId !== null){
+          photoIdArr.push(photoId);
+        }else{
+          photoIdArr = this.selectedPhotos;
+        }
+        if(photoIdArr.length > 0){
+          this.$mdDialog.show({
+            locals:{photoIdArr:this.selectedPhotos},
+            controller: ListAlbumsController,
+            templateUrl: 'ngApp/views/listAlbumsDialog.html',
+            parent: angular.element(document.body),
+            targetEvent: event,
+            controllerAs: 'controller',
+            clickOutsideToClose:true
+          });
+          this.selectedPhotos = [];
+        }else{
+          this.$window.alert("Please select photos to add to album.");
+        }        
       }
 
 

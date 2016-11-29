@@ -1,9 +1,6 @@
 namespace photoalbum.Controllers {
   export class AccountController{
-    public userCredentials = {
-      username: 'sai',
-      password:'baba'
-    };
+    public userCredentials = {};
     public user = {};
     public errorMsg;
     public alert = {};

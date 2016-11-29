@@ -64,19 +64,16 @@ namespace photoalbum.Controllers{
     }
 
     public deletePhotos(id){
+      let photoArray = [];
       if(id !== null){
-        for(let j=this.album.photos.length-1;j>=0;j--){
-          if(id === this.album.photos[j]._id){
-            if(this.album.albumCover === this.album.photos[j].fileUrl){
-              this.album.albumCover = "ngApp/images/album.jpg";
-            }
-            this.album.photos.splice(j, 1);
-          }
-        }
+        photoArray.push(id);
       }else{
-        for(let i=0;i<this.selectedPhotos.length;i++){
+        photoArray = this.selectedPhotos;
+      }
+      if(photoArray.length > 0){
+        for(let i=0;i<photoArray.length;i++){
           for(let j=this.album.photos.length-1;j>=0;j--){
-            if(this.selectedPhotos[i] === this.album.photos[j]._id){
+            if(photoArray[i] === this.album.photos[j]._id){
               if(this.album.albumCover === this.album.photos[j].fileUrl){
                 this.album.albumCover = "ngApp/images/album.jpg";
               }
@@ -84,11 +81,13 @@ namespace photoalbum.Controllers{
             }
           }
         }
+        this.photoAlbumService.saveAlbum(this.album).then(()=>{
+          console.log("Album updated");
+          this.selectedPhotos = [];
+        });
+      }else{
+        this.$window.alert("Please select photos to delete.");
       }
-      this.photoAlbumService.saveAlbum(this.album).then(()=>{
-        console.log("Album updated");
-        this.selectedPhotos = [];
-      });
     }
 
     constructor(private photoAlbumService:photoalbum.Services.PhotoAlbumService,

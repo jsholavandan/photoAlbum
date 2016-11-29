@@ -30,6 +30,7 @@ namespace photoalbum.Controllers {
       this.photoAlbumService.savePhoto(photoObj).then((data) => {
          console.log("photo saved");
          this.$scope.$broadcast("NewPhoto");
+         this.$state.go('photos');
       }).catch((err) => {
         console.log(err);
       });
